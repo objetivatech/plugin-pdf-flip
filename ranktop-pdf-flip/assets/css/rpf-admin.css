@@ -1,0 +1,15 @@
+/* Ranktop PDF Flip — admin styles */
+
+.column-rpf_capa {
+	width: 48px;
+}
+
+.column-rpf_capa img {
+	display: block;
+	border-radius: 2px;
+}
+
+.column-rpf_numero,
+.column-rpf_destaque {
+	width: 90px;
+}

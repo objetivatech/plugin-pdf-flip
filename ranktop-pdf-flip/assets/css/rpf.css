@@ -1,0 +1,343 @@
+/* Ranktop PDF Flip — frontend styles */
+
+.rpf-flipbook {
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	margin: 0 auto;
+	background: #1b1b1b;
+	border-radius: 6px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.rpf-toolbar {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 10px;
+	background: #262626;
+	flex-wrap: wrap;
+}
+
+.rpf-toolbar-spacer {
+	flex: 1 1 auto;
+}
+
+.rpf-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 34px;
+	height: 34px;
+	padding: 0 8px;
+	background: #3a3a3a;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	line-height: 1;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.rpf-btn:hover,
+.rpf-btn:focus {
+	background: #4a4a4a;
+}
+
+.rpf-btn[aria-pressed="true"] {
+	background: #6b6bff;
+}
+
+.rpf-page-indicator {
+	color: #eee;
+	font-size: 13px;
+	padding: 0 6px;
+	white-space: nowrap;
+}
+
+.rpf-stage {
+	position: relative;
+	flex: 1 1 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 300px;
+	padding: 16px;
+	overflow: auto;
+}
+
+.rpf-loading {
+	color: #ccc;
+	font-size: 14px;
+}
+
+.rpf-loading.rpf-error {
+	color: #ff8080;
+}
+
+.rpf-book-wrapper {
+	transition: transform 0.2s ease;
+	transform-origin: center center;
+}
+
+.rpf-book {
+	margin: 0 auto;
+}
+
+.rpf-page {
+	background: #fff;
+	overflow: hidden;
+}
+
+.rpf-page canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.rpf-page-number {
+	position: absolute;
+	bottom: 6px;
+	right: 10px;
+	font-size: 11px;
+	color: #999;
+}
+
+.rpf-thumb-panel {
+	position: absolute;
+	inset: 0;
+	background: rgba(20, 20, 20, 0.92);
+	overflow-y: auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	gap: 10px;
+	padding: 16px;
+}
+
+.rpf-thumb {
+	background: none;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	padding: 4px;
+	cursor: pointer;
+	color: #ddd;
+	font-size: 11px;
+	text-align: center;
+}
+
+.rpf-thumb:hover,
+.rpf-thumb:focus {
+	border-color: #6b6bff;
+}
+
+.rpf-thumb canvas {
+	display: block;
+	max-width: 90px;
+	height: auto;
+	margin-bottom: 4px;
+}
+
+.rpf-error {
+	color: #b30000;
+	padding: 16px;
+}
+
+/* Card "última edição" */
+
+.rpf-card {
+	display: block;
+	max-width: 360px;
+}
+
+.rpf-card-link {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	color: inherit;
+	border: 1px solid #e2e2e2;
+	border-radius: 8px;
+	overflow: hidden;
+	background: #fff;
+}
+
+.rpf-card--banner .rpf-card-link {
+	flex-direction: row;
+	max-width: none;
+}
+
+.rpf-card-capa img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.rpf-card--banner .rpf-card-capa {
+	flex: 0 0 140px;
+}
+
+.rpf-card--banner .rpf-card-capa img {
+	height: 100%;
+	object-fit: cover;
+}
+
+.rpf-card-info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 14px 16px;
+}
+
+.rpf-card-label {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #888;
+}
+
+.rpf-card-numero {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.rpf-card-data {
+	font-size: 13px;
+	color: #666;
+}
+
+.rpf-card-cta {
+	margin-top: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #2b5cff;
+}
+
+/* Single edition page */
+
+.rpf-single-edicao {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 24px 16px 48px;
+}
+
+.rpf-edicao-header {
+	margin-bottom: 16px;
+}
+
+.rpf-edicao-title {
+	margin: 0 0 6px;
+}
+
+.rpf-edicao-meta {
+	color: #666;
+	font-size: 14px;
+}
+
+.rpf-edicao-descricao {
+	margin-bottom: 20px;
+}
+
+/* Archive grid */
+
+.rpf-archive-edicoes {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 24px 16px 48px;
+}
+
+.rpf-archive-filter {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 20px;
+	flex-wrap: wrap;
+}
+
+.rpf-archive-filter select {
+	padding: 6px 10px;
+}
+
+.rpf-archive-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 20px;
+}
+
+.rpf-archive-item {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	color: inherit;
+}
+
+.rpf-archive-capa {
+	display: block;
+	aspect-ratio: 3 / 4;
+	background: #eee;
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.rpf-archive-capa img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.rpf-archive-item-info {
+	margin-top: 8px;
+	display: flex;
+	flex-direction: column;
+}
+
+.rpf-archive-numero {
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.rpf-archive-data {
+	font-size: 12px;
+	color: #777;
+}
+
+.rpf-archive-pagination {
+	margin-top: 28px;
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.rpf-archive-pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 34px;
+	height: 34px;
+	padding: 0 8px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	text-decoration: none;
+	color: inherit;
+}
+
+.rpf-archive-pagination .page-numbers.current {
+	background: #2b5cff;
+	color: #fff;
+	border-color: #2b5cff;
+}
+
+@media (max-width: 640px) {
+	.rpf-stage {
+		padding: 8px;
+	}
+
+	.rpf-card--banner .rpf-card-link {
+		flex-direction: column;
+	}
+}
