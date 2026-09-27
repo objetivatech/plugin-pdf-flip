@@ -1,6 +1,6 @@
 <?php
 /**
- * [edicao] and [edicao_ultima] shortcodes.
+ * [edicao], [edicao_ultima] and [edicoes] shortcodes.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,6 +21,7 @@ class RPF_Shortcodes {
 	private function __construct() {
 		add_shortcode( 'edicao', array( $this, 'render_edicao' ) );
 		add_shortcode( 'edicao_ultima', array( $this, 'render_edicao_ultima' ) );
+		add_shortcode( 'edicoes', array( $this, 'render_biblioteca' ) );
 	}
 
 	/**
@@ -67,11 +68,14 @@ class RPF_Shortcodes {
 
 	/**
 	 * [edicao_ultima estilo="card|banner"]
+	 *
+	 * Colors, border and image shape are controlled globally in
+	 * Edições → Configurações; "estilo" omitted uses the configured default.
 	 */
 	public function render_edicao_ultima( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'estilo' => 'card',
+				'estilo' => '',
 			),
 			$atts,
 			'edicao_ultima'
@@ -86,5 +90,33 @@ class RPF_Shortcodes {
 		wp_enqueue_style( 'rpf-reader' );
 
 		return RPF_Helpers::render_card_html( $data, $atts['estilo'] );
+	}
+
+	/**
+	 * [edicoes colunas="4" quantidade="0" filtro="sim" ordenacao="recentes"]
+	 *
+	 * Renders the "biblioteca"/estante grid of editions — an embeddable
+	 * alternative to the plugin's own /edicoes/ archive page. Omitted
+	 * attributes fall back to Edições → Configurações.
+	 */
+	public function render_biblioteca( $atts ) {
+		$atts = shortcode_atts(
+			array(
+				'colunas'    => '',
+				'quantidade' => '',
+				'filtro'     => '',
+				'ordenacao'  => '',
+			),
+			$atts,
+			'edicoes'
+		);
+
+		$atts = array_filter( $atts, static function ( $value ) {
+			return '' !== $value;
+		} );
+
+		RPF_Assets::enqueue_archive();
+
+		return RPF_Helpers::render_biblioteca_html( $atts );
 	}
 }

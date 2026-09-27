@@ -3,7 +3,7 @@
  * Plugin Name:       Ranktop PDF Flip
  * Plugin URI:        https://github.com/objetivatech/plugin-pdf-flip
  * Description:       Gerencia edições periódicas (jornal/revista) em PDF com um leitor flipbook standalone, sem dependências externas.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 5.9
  * Requires PHP:      7.4
  * Author:            Ranktop
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'RPF_VERSION', '1.0.0' );
+define( 'RPF_VERSION', '1.1.0' );
 define( 'RPF_FILE', __FILE__ );
 define( 'RPF_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RPF_URL', plugin_dir_url( __FILE__ ) );
@@ -28,6 +28,7 @@ require_once RPF_PATH . 'includes/class-rpf-cpt.php';
 require_once RPF_PATH . 'includes/class-rpf-admin.php';
 require_once RPF_PATH . 'includes/class-rpf-assets.php';
 require_once RPF_PATH . 'includes/class-rpf-frontend.php';
+require_once RPF_PATH . 'includes/class-rpf-settings.php';
 require_once RPF_PATH . 'includes/class-rpf-shortcodes.php';
 
 /**
@@ -40,6 +41,7 @@ function rpf_init() {
 	RPF_Admin::instance();
 	RPF_Assets::instance();
 	RPF_Frontend::instance();
+	RPF_Settings::instance();
 	RPF_Shortcodes::instance();
 }
 add_action( 'plugins_loaded', 'rpf_init' );

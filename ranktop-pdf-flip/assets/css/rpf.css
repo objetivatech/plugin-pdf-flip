@@ -158,10 +158,10 @@
 	flex-direction: column;
 	text-decoration: none;
 	color: inherit;
-	border: 1px solid #e2e2e2;
-	border-radius: 8px;
+	border: var(--rpf-card-border-width, 1px) solid var(--rpf-card-border-color, #e2e2e2);
+	border-radius: var(--rpf-card-radius, 8px);
 	overflow: hidden;
-	background: #fff;
+	background: var(--rpf-card-bg, #fff);
 }
 
 .rpf-card--banner .rpf-card-link {
@@ -169,19 +169,43 @@
 	max-width: none;
 }
 
+.rpf-card-capa {
+	display: block;
+	overflow: hidden;
+	aspect-ratio: 3 / 4;
+}
+
 .rpf-card-capa img {
 	display: block;
 	width: 100%;
-	height: auto;
+	height: 100%;
+	object-fit: cover;
+}
+
+.rpf-shape-quadrado .rpf-card-capa {
+	aspect-ratio: 1 / 1;
+}
+
+.rpf-shape-paisagem .rpf-card-capa {
+	aspect-ratio: 16 / 9;
+}
+
+.rpf-shape-circular .rpf-card-capa {
+	aspect-ratio: 1 / 1;
+	width: 96px;
+	margin: 16px auto 0;
+	border-radius: 50%;
 }
 
 .rpf-card--banner .rpf-card-capa {
 	flex: 0 0 140px;
+	aspect-ratio: auto;
 }
 
-.rpf-card--banner .rpf-card-capa img {
-	height: 100%;
-	object-fit: cover;
+.rpf-card--banner.rpf-shape-circular .rpf-card-capa {
+	flex-basis: 96px;
+	margin: 16px 0 0 16px;
+	align-self: flex-start;
 }
 
 .rpf-card-info {
@@ -196,24 +220,25 @@
 	font-weight: 700;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	color: #888;
+	color: var(--rpf-card-text-color, #888);
 }
 
 .rpf-card-numero {
 	font-size: 18px;
 	font-weight: 700;
+	color: var(--rpf-card-title-color, #111);
 }
 
 .rpf-card-data {
 	font-size: 13px;
-	color: #666;
+	color: var(--rpf-card-text-color, #666);
 }
 
 .rpf-card-cta {
 	margin-top: 6px;
 	font-size: 13px;
 	font-weight: 600;
-	color: #2b5cff;
+	color: var(--rpf-card-cta-color, #2b5cff);
 }
 
 /* Single edition page */
@@ -241,12 +266,16 @@
 	margin-bottom: 20px;
 }
 
-/* Archive grid */
+/* Archive grid (also used by the [edicoes] "biblioteca" shortcode) */
 
 .rpf-archive-edicoes {
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 24px 16px 48px;
+}
+
+.rpf-biblioteca {
+	margin: 20px 0;
 }
 
 .rpf-archive-filter {
